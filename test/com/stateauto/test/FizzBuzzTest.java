@@ -8,18 +8,16 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by wea3765 on 3/28/2017.
- */
 public class FizzBuzzTest {
 
     private FizzBuzz fb;
 
     private void assertCountStringInArray(String[] items, String keyToFind, int expectedCount) {
         int actualCount = 0;
-        System.out.println("keyToFind: " + keyToFind + ", expectedCount: " + expectedCount);
+        System.out.println("\nkeyToFind: " + keyToFind + ", expectedCount: " + expectedCount);
         System.out.println("---");
         for (int i = 0; i < items.length; i++) {
             String item = items[i];
@@ -38,66 +36,45 @@ public class FizzBuzzTest {
 
     @Test
     public void countToOneTest() throws Exception{
-       String[] ret= fb.countToOne();
+       String[] ret= fb.countToManyAsString(1);
        assertEquals("1",ret[0]);
     }
 
     @Test
     public void countToTwoTest() throws Exception{
-        String[] ret= fb.countToTwo();
+        String[] ret= fb.countToManyAsString(2);
         assertEquals("1",ret[0]);
         assertEquals("2",ret[1]);
     }
 
     @Test
     public void countToThreeTest() throws Exception {
-        String[] ret = fb.countToThree();
+        String[] ret = fb.countToManyAsString(3);
         assertCountStringInArray(ret, "fizz", 1);
     }
 
     @Test
-    public void countToOneHundredTest() throws Exception {
-        String[] ret =fb.countToOneHundred();
-        assertTrue(ret.length == 100);
-        assertCountStringInArray(ret, "fizz", 33);
-        assertCountStringInArray(ret, "buzz", 14);
-        assertEquals("buzz",ret[99]);
+    public void countToFifteenTest() throws Exception {
+        String[] ret = fb.countToManyAsString(15);
+        assertTrue(ret.length == 15);
+        assertCountStringInArray(ret, "fizz buzz", 1);
     }
 
+    @Test
+    public void countToThirtyTest() throws Exception {
+        String[] ret = fb.countToManyAsString(30);
+        assertTrue(ret.length == 30);
+        assertCountStringInArray(ret, "fizz buzz", 2);
+    }
 
-//    @Test
-//    public void countToSixTest() throws Exception {
-//        String[] ret = fb.countToSix();
-//        assertEquals("1", ret[0]);
-//        assertEquals("2", ret[1]);
-//        assertEquals("fizz", ret[2]);
-//        assertEquals("4", ret[3]);
-//        assertEquals("buzz", ret[4]);
-//        assertEquals("fizz", ret[5]);
-//    }
-//
-//
-//    @Test
-//    public void countToFiveTest() throws Exception {
-//        String[] ret = fb.countToFive();
-//        assertEquals("1", ret[0]);
-//        assertEquals("2", ret[1]);
-//        assertEquals("fizz", ret[2]);
-//        assertEquals("4", ret[3]);
-//        assertEquals("buzz", ret[4]);
-//    }
-
-//    @Test
-//    public void countToEightTest() throws Exception {
-//        String[] ret = fb.countToEight();
-//        assertEquals("1", ret[0]);
-//        assertEquals("2", ret[1]);
-//        assertEquals("fizz", ret[2]);
-//        assertEquals("4", ret[3]);
-//        assertEquals("buzz", ret[4]);
-//        assertEquals("fizz", ret[5]);
-//        assertEquals("7", ret[6]);
-//        assertEquals("8", ret[7]);
-//    }
+    @Test
+    public void countToOneHundredTest() throws Exception {
+        String[] ret =fb.countToManyAsString(100);
+        assertTrue(ret.length == 100);
+        assertCountStringInArray(ret, "fizz", 27);
+        assertCountStringInArray(ret, "buzz", 14);
+        assertCountStringInArray(ret, "fizz buzz", 6);
+        assertEquals("buzz",ret[99]);
+    }
 }
 
