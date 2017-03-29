@@ -1,6 +1,7 @@
 package com.stateauto.test;
 
 import com.stateauto.FizzBuzz;
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -22,8 +23,8 @@ public class FizzBuzzTest {
 
     @Test
     public void countToOneTest() throws Exception{
-       int ret= fb.countToOne();
-       assertEquals(1,ret);
+       int[] ret= fb.countToOne();
+       assertEquals(1,ret[0]);
     }
 
     @Test
@@ -32,9 +33,14 @@ public class FizzBuzzTest {
         assertEquals(1,ret[0]);
         assertEquals(2,ret[1]);
     }
-//    @Test
-//    public void countToManyTest() throws Exception{
-//        int ret= fb.countToMany(100);
+
+    @Test
+    public void countToOneHundredTest() throws Exception {
+        int[] ret =fb.countToOneHundred();
+        assertEquals(100,ret[99]);
+    }
+
+//            int ret= fb.countToMany(100);
 //        assertEquals(100,ret);
 //
 //    }
